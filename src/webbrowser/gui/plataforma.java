@@ -5,6 +5,10 @@
  */
 package webbrowser.gui;
 
+import java.awt.BorderLayout;
+import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author andre
@@ -74,6 +78,12 @@ public class plataforma extends javax.swing.JFrame {
 
         jToggleButton1.setText("Privado");
 
+        jPanel5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel5FocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -92,9 +102,7 @@ public class plataforma extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 524, Short.MAX_VALUE)
                 .addComponent(jToggleButton1))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,6 +190,18 @@ public class plataforma extends javax.swing.JFrame {
     private void jTabPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabPanelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabPanelMouseClicked
+
+    private void jPanel5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusGained
+     displayEditorPane = new JEditorPane();
+        displayEditorPane.setContentType("text/html");
+        displayEditorPane.setEditable(false);
+        displayEditorPane.addHyperlinkListener(this);
+        
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(buttonPanel, BorderLayout.NORTH);
+        getContentPane().add(new JScrollPane(displayEditorPane),
+                BorderLayout.CENTER);
+    }//GEN-LAST:event_jPanel5FocusGained
 
     /**
      * @param args the command line arguments
