@@ -32,42 +32,44 @@ public class plataforma extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
+        jButtonForward = new javax.swing.JButton();
+        jButtonStop = new javax.swing.JButton();
+        jButtonRefresh = new javax.swing.JButton();
         jTabPanel = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButtonPrivate = new javax.swing.JToggleButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane = new javax.swing.JEditorPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jButtonGo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridLayout());
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("<");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBack.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButtonBack.setText("<");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBackActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(jButtonBack);
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText(">");
-        jPanel1.add(jButton2);
+        jButtonForward.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButtonForward.setText(">");
+        jPanel1.add(jButtonForward);
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton3.setText("X");
-        jPanel1.add(jButton3);
+        jButtonStop.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButtonStop.setText("X");
+        jPanel1.add(jButtonStop);
 
-        jButton5.setText("F5");
-        jPanel1.add(jButton5);
+        jButtonRefresh.setText("F5");
+        jPanel1.add(jButtonRefresh);
 
         jTabPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTabPanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,7 +78,7 @@ public class plataforma extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Privado");
+        jToggleButtonPrivate.setText("Privado");
 
         jPanel5.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -84,15 +86,17 @@ public class plataforma extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setViewportView(jEditorPane);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -100,14 +104,14 @@ public class plataforma extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 524, Short.MAX_VALUE)
-                .addComponent(jToggleButton1))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jToggleButtonPrivate))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jToggleButton1)
+                .addComponent(jToggleButtonPrivate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -130,10 +134,10 @@ public class plataforma extends javax.swing.JFrame {
 
         jTextField1.setText("https://www.google.com.br");
 
-        jButton4.setText("Go");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGo.setText("Go");
+        jButtonGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonGoActionPerformed(evt);
             }
         });
 
@@ -145,13 +149,13 @@ public class plataforma extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTextField1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonGo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonGo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -179,28 +183,20 @@ public class plataforma extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonGoActionPerformed
 
     private void jTabPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabPanelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabPanelMouseClicked
 
     private void jPanel5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusGained
-     displayEditorPane = new JEditorPane();
-        displayEditorPane.setContentType("text/html");
-        displayEditorPane.setEditable(false);
-        displayEditorPane.addHyperlinkListener(this);
-        
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(buttonPanel, BorderLayout.NORTH);
-        getContentPane().add(new JScrollPane(displayEditorPane),
-                BorderLayout.CENTER);
+     
     }//GEN-LAST:event_jPanel5FocusGained
 
     /**
@@ -239,18 +235,20 @@ public class plataforma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonForward;
+    private javax.swing.JButton jButtonGo;
+    private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JButton jButtonStop;
+    private javax.swing.JEditorPane jEditorPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabPanel;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButtonPrivate;
     // End of variables declaration//GEN-END:variables
 }

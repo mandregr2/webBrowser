@@ -15,6 +15,7 @@ public class WebBrowser {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+       plataforma
         // TODO code application logic here
     }
     
