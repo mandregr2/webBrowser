@@ -6,20 +6,28 @@
 package webbrowser.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.io.IOException;
+import java.net.URL;
 import javax.swing.JEditorPane;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.event.HyperlinkListener;
 
 /**
  *
  * @author andre
  */
 public class plataforma extends javax.swing.JFrame {
+    private Object displayEditorPane;
 
     /**
      * Creates new form plataforma
      */
     public plataforma() {
         initComponents();
+        
+     
     }
 
     /**
@@ -40,16 +48,14 @@ public class plataforma extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jToggleButtonPrivate = new javax.swing.JToggleButton();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane = new javax.swing.JEditorPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextBarraEndereco = new javax.swing.JTextField();
         jButtonGo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonBack.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButtonBack.setText("<");
@@ -69,6 +75,11 @@ public class plataforma extends javax.swing.JFrame {
         jPanel1.add(jButtonStop);
 
         jButtonRefresh.setText("F5");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonRefresh);
 
         jTabPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -86,17 +97,15 @@ public class plataforma extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jEditorPane);
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+            .addGap(0, 593, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+            .addGap(0, 311, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -132,7 +141,7 @@ public class plataforma extends javax.swing.JFrame {
 
         jTabPanel.addTab("+", jPanel4);
 
-        jTextField1.setText("https://www.google.com.br");
+        jTextBarraEndereco.setText("https://www.google.com.br");
 
         jButtonGo.setText("Go");
         jButtonGo.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +156,7 @@ public class plataforma extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1)
+                .addComponent(jTextBarraEndereco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonGo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -156,7 +165,7 @@ public class plataforma extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButtonGo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTextBarraEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,7 +197,28 @@ public class plataforma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGoActionPerformed
-        // TODO add your handling code here:
+        String UrlDigitada = jTextBarraEndereco.getText();
+        JEditorPane jep = new JEditorPane();
+      //JEditorPane jep = jEditorPane1;
+        jep.setEditable(false);
+       try {
+    jep.setPage(UrlDigitada);
+     }
+     catch (IOException e) {
+       jep.setContentType("text/html");
+       jep.setText("<html>Could not load http://www.oreilly.com </html>");
+     } 
+      
+     JScrollPane scrollPane = new JScrollPane(jep);     
+     //JFrame f = new JFrame("O'Reilly & Associates");
+    //  Next line requires Java 1.3
+     
+     //f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     jPanel5.setLayout(new BorderLayout());
+     jPanel5.add(scrollPane, BorderLayout.CENTER);
+     jPanel5.setSize(512, 342);
+     jPanel5.show();
+            
     }//GEN-LAST:event_jButtonGoActionPerformed
 
     private void jTabPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabPanelMouseClicked
@@ -198,6 +228,10 @@ public class plataforma extends javax.swing.JFrame {
     private void jPanel5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusGained
      
     }//GEN-LAST:event_jPanel5FocusGained
+
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,15 +274,13 @@ public class plataforma extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGo;
     private javax.swing.JButton jButtonRefresh;
     private javax.swing.JButton jButtonStop;
-    private javax.swing.JEditorPane jEditorPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabPanel;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextBarraEndereco;
     private javax.swing.JToggleButton jToggleButtonPrivate;
     // End of variables declaration//GEN-END:variables
 }

@@ -141,11 +141,11 @@ public class MiniBrowser extends JFrame
     // Carrrega e apresenta a página especificada no campo de texto.
     private void actionGo() {
         URL verifiedUrl = verifyUrl(locationTextField.getText());
-        if (verifiedUrl != null) {
+        //if (verifiedUrl != null) {
             showPage(verifiedUrl, true);
-        } else {
-            showError("Invalid URL");
-        }
+        //} else {
+       //     showError("Invalid URL");
+       // }
     }
     
     // Apresenta mensagem de erro em uma caixa de diálogo.
@@ -157,7 +157,7 @@ public class MiniBrowser extends JFrame
     // Verifica o formato da URL.
     private URL verifyUrl(String url) {
         // Só permite URLs HTTP.
-        if (!url.toLowerCase().startsWith("http://"))
+        if (!url.toLowerCase().startsWith("https://"))
             return null;
         
         // Verifica o formato da URL.
