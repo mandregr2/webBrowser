@@ -5,6 +5,8 @@
  */
 package webbrowser;
 
+import webbrowser.database.FazConsulta;
+
 /**
  *
  * @author andre
@@ -15,7 +17,9 @@ public class WebBrowser {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //plataforma
+       FazConsulta fc = new FazConsulta();
+       fc.fazConsultaSQL("select * from historico");
+       
         // TODO code application logic here
     }
     

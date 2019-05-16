@@ -11,11 +11,11 @@ class MysqlCon {
 
     public static void main(String args[]) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/webbrowser"
             );
-//here sonoo is database name, root is username and password 
+//here webbrowser is database name, root is username and admin password 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from historico");
             while (rs.next()) {

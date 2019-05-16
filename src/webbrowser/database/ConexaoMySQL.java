@@ -34,7 +34,7 @@ try {
  
 // Carregando o JDBC Driver padrão
  
-String driverName = "com.mysql.jdbc.Driver";//"com.mysql.cj.jdbc.Driver";                        
+String driverName = "com.mysql.cj.jdbc.Driver";//"com.mysql.cj.jdbc.Driver";                        
  
 Class.forName(driverName);
  

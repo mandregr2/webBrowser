@@ -7,6 +7,8 @@ package webbrowser.gui;
 
 import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
+import webbrowser.database.FazConsulta;
+import webbrowser.database.ListaConsulta;
 import webbrowser.model.HistoricoTableModel;
 import webbrowser.model.Historico;
 
@@ -25,7 +27,9 @@ public class TabHistorico extends javax.swing.JPanel {
     public TabHistorico() {
         initComponents();
         jTableHistorico.setModel(HistoricoTable);
-        
+        FazConsulta f = new FazConsulta();
+        f.fazConsultaSQL("select * from historico");
+        carrega();
 
     }
 
@@ -130,10 +134,9 @@ public class TabHistorico extends javax.swing.JPanel {
     private void jButtonLimpaTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpaTudoActionPerformed
         if (jTableHistorico.getRowCount() > 0) {
 
-            do {
-                ((DefaultTableModel) jTableHistorico.getModel()).removeRow(0);
+             do {
+                jTableHistorico.removeRowSelectionInterval(0, 0);
             } while (jTableHistorico.getRowCount() > 0);
-
         }
     }//GEN-LAST:event_jButtonLimpaTudoActionPerformed
 
@@ -146,6 +149,31 @@ public class TabHistorico extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jPanelHistorico.setEnabled(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+public void carrega() {
+
+        if (jTableHistorico.getRowCount() > 0) {
+
+            do {
+                jTableHistorico.removeRowSelectionInterval(0, 0);
+            } while (jTableHistorico.getRowCount() > 0);
+
+        }
+        for (int i = 0; i < ListaConsulta.aList.size(); i++) {
+            HistoricoTable.addRowInTable(ListaConsulta.aList.get(i));
+        }
+
+    }
+
+    public void apaga() {
+
+        if (jTableHistorico.getRowCount() > 0) {
+
+            do {
+                ((DefaultTableModel) jTableHistorico.getModel()).removeRow(0);
+            } while (jTableHistorico.getRowCount() > 0);
+
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
