@@ -5,17 +5,25 @@
  */
 package webbrowser.gui;
 
+import java.awt.BorderLayout;
+import java.io.IOException;
+import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
+import webbrowser.gui.plataforma.*;
+
 /**
  *
  * @author andre
  */
 public class Navegacao extends javax.swing.JPanel {
+    private Object jPanel5;
 
     /**
      * Creates new form Navegacao
      */
     public Navegacao() {
         initComponents();
+      
     }
 
     /**
@@ -40,7 +48,6 @@ public class Navegacao extends javax.swing.JPanel {
             .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.ScrollPane scrollPane1;

@@ -7,27 +7,41 @@ package webbrowser.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.PopupMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.table.DefaultTableModel;
+import webbrowser.gui.tab.*;
+import webbrowser.model.Historico;
+import webbrowser.model.HistoricoTableModel;
 
 /**
  *
  * @author andre
  */
 public class plataforma extends javax.swing.JFrame {
+
     private Object displayEditorPane;
+    HistoricoTableModel HistoricoTable = new HistoricoTableModel();
 
     /**
      * Creates new form plataforma
      */
     public plataforma() {
         initComponents();
-        
-     
+        //jTableHistorico.setModel(HistoricoTable);
+        jButtonAddTab.doClick();
+
     }
 
     /**
@@ -39,200 +53,74 @@ public class plataforma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButtonBack = new javax.swing.JButton();
-        jButtonForward = new javax.swing.JButton();
-        jButtonStop = new javax.swing.JButton();
-        jButtonRefresh = new javax.swing.JButton();
-        jTabPanel = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        jToggleButtonPrivate = new javax.swing.JToggleButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jTextBarraEndereco = new javax.swing.JTextField();
-        jButtonGo = new javax.swing.JButton();
+        jButtonAddTab = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
-
-        jButtonBack.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButtonBack.setText("<");
-        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAddTab.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jButtonAddTab.setText("New Tab");
+        jButtonAddTab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackActionPerformed(evt);
+                jButtonAddTabActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonBack);
 
-        jButtonForward.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButtonForward.setText(">");
-        jPanel1.add(jButtonForward);
-
-        jButtonStop.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButtonStop.setText("X");
-        jPanel1.add(jButtonStop);
-
-        jButtonRefresh.setText("F5");
-        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Historico");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRefreshActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonRefresh);
-
-        jTabPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTabPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabPanelMouseClicked(evt);
-            }
-        });
-
-        jToggleButtonPrivate.setText("Privado");
-
-        jPanel5.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel5FocusGained(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 593, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButtonPrivate))
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jToggleButtonPrivate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabPanel.addTab("tab", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 593, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
-        );
-
-        jTabPanel.addTab("+", jPanel4);
-
-        jTextBarraEndereco.setText("https://www.google.com.br");
-
-        jButtonGo.setText("Go");
-        jButtonGo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextBarraEndereco)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonGo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButtonGo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jTextBarraEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabPanel)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
+                        .addComponent(jButtonAddTab, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddTab, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabPanel))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    private void jButtonAddTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTabActionPerformed
+        tab t = new tab();
+        createTabPanel(t, visibleTabPanels.size());
+        jTabbedPane1.setSelectedIndex(visibleTabPanels.size() - 1);
 
-    private void jButtonGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGoActionPerformed
-        String UrlDigitada = jTextBarraEndereco.getText();
-        JEditorPane jep = new JEditorPane();
-      //JEditorPane jep = jEditorPane1;
-        jep.setEditable(false);
-       try {
-    jep.setPage(UrlDigitada);
-     }
-     catch (IOException e) {
-       jep.setContentType("text/html");
-       jep.setText("<html>Could not load http://www.oreilly.com </html>");
-     } 
-      
-     JScrollPane scrollPane = new JScrollPane(jep);     
-     //JFrame f = new JFrame("O'Reilly & Associates");
-    //  Next line requires Java 1.3
-     
-     //f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     jPanel5.setLayout(new BorderLayout());
-     jPanel5.add(scrollPane, BorderLayout.CENTER);
-     jPanel5.setSize(512, 342);
-     jPanel5.show();
-            
-    }//GEN-LAST:event_jButtonGoActionPerformed
+    }//GEN-LAST:event_jButtonAddTabActionPerformed
 
-    private void jTabPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabPanelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabPanelMouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TabHistorico th = new TabHistorico();
+        createTabPanelHistorico(th, visibleTabPanels.size());
+        jTabbedPane1.setSelectedIndex(visibleTabPanels.size() - 1);
 
-    private void jPanel5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusGained
-     
-    }//GEN-LAST:event_jPanel5FocusGained
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonRefreshActionPerformed
-
+    // public void createProcessPanel(tab _newPanel, int _i) {
+    //  visibleTabPanels.add(_newPanel);
+    //_newPanel.goVisible();
+    //browserTabbedPane.addTab("Novo Processo", _newPanel);
+    //createCloseButton(_newPanel, _i);
+    // }
     /**
      * @param args the command line arguments
      */
@@ -268,19 +156,48 @@ public class plataforma extends javax.swing.JFrame {
         });
     }
 
+    public void createTabPanel(JPanel _newPanel, int _i) {
+        visibleTabPanels.add(_newPanel);
+
+        jTabbedPane1.addTab("Tab" + visibleTabPanels.size(), _newPanel);
+        createCloseButton(_newPanel, _i);
+    }
+
+    public void createTabPanelHistorico(JPanel _newPanel, int _i) {
+        visibleTabPanels.add(_newPanel);
+
+        jTabbedPane1.addTab("Historico", _newPanel);
+        createCloseButton(_newPanel, _i);
+        
+    }
+
+    public void createCloseButton(final JPanel _c, Integer _pos) {
+        java.awt.FlowLayout f = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0);
+       // JPanel pnlTab = new JPanel(_c, f);
+
+        //jTabPanel.setTabComponentAt(_pos, pnlTab);
+        // Add the listener that removes the tab
+        ActionListener listener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jTabbedPane1.remove(_c);
+                //      _c.goInvisible();
+                visibleTabPanels.remove(_c);
+                hiddenTabPanels.add(_c);
+            }
+        };
+        // pnlTab.addListener(listener);
+    }
+
+    public void setFocusOnTab(int _i) {
+        jTabbedPane1.setSelectedIndex(_i);
+    }
+    public List<JPanel> visibleTabPanels = new ArrayList<JPanel>();
+    public List<JPanel> hiddenTabPanels = new ArrayList<JPanel>();
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonForward;
-    private javax.swing.JButton jButtonGo;
-    private javax.swing.JButton jButtonRefresh;
-    private javax.swing.JButton jButtonStop;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JTabbedPane jTabPanel;
-    private javax.swing.JTextField jTextBarraEndereco;
-    private javax.swing.JToggleButton jToggleButtonPrivate;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAddTab;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
