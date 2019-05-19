@@ -3,7 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/model/tab.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/model/Historico.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/model/HistoricoTableModel.java</file>
             <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/gui/plataforma.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/ConectDatabase/FazConsulta.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/ConectDatabase/ListaConsulta.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/ConectDatabase/ConexaoMySQL.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/ConectDatabase/MysqlCon.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/ConectDatabase/BancoDeDados.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/ConectDatabase/ClsSQLHistorico.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/model/TabHistorico.java</file>
+            <file>file:/C:/Users/andre/Documents/NetBeansProjects/webBrowser/src/webbrowser/model/TabTitlePanel.java</file>
         </group>
     </open-files>
 </project-private>

@@ -2,7 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package webbrowser.gui;
+package webbrowser.model;
+import webbrowser.model.tab;
 import javax.swing.*;
 import com.jgoodies.looks.common.*;
 import java.awt.event.ActionListener;

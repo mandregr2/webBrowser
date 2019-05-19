@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package webbrowser.database;
+package webbrowser.ConectDatabase;
+
+import java.sql.SQLException;
 
 
 
@@ -17,7 +19,7 @@ public class BancoDeDados {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
    
     ConexaoMySQL.statusConection();
     ConexaoMySQL.getConexaoMySQL();

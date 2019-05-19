@@ -4,14 +4,26 @@
  * and open the template in the editor.
  */
 package webbrowser.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Comparator;
+import webbrowser.ConectDatabase.ClsSQLHistorico;
+import webbrowser.ConectDatabase.ConexaoMySQL;
+
 
 /**
  *
  * @author andre
  */
-public class Historico implements Comparable<Historico>{
-    
+public class Historico implements Comparable<Historico> {
+
+ //caso precise criar o banco de dados   
+ //   CREATE TABLE historico (
+ //   dataAcesso varchar (100) PRIMARY KEY NOT NULL,
+ //   urlAcesso VARCHAR (200)   
+//)
     private String urlConsultada;
     private String dataConsulta;
 
@@ -47,7 +59,26 @@ public class Historico implements Comparable<Historico>{
     public void setDataConsulta(String dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
+//salva no historico  - ta ok esse metodo
     public void salvaNoHistorico(String data, String UrlDigitada) {
-        //salvar no banco
+        Connection con;
+        
+        con = new ConexaoMySQL().getConnection();
+
+        String sql = "insert into historico(dataAcesso,urlAcesso)VALUES(?,?)";
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setString(1, data);
+            stmt.setString(2, UrlDigitada);
+
+            stmt.execute(); //executa comando       
+            stmt.close();
+            con.close();
+        } catch (SQLException u) {
+            throw new RuntimeException(u);
+        }
+
     }
 }

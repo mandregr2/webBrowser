@@ -5,6 +5,8 @@
  */
 package webbrowser.gui;
 
+import webbrowser.model.TabHistorico;
+import webbrowser.model.tab;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.PopupMenu;
@@ -12,16 +14,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.table.DefaultTableModel;
-import webbrowser.gui.tab.*;
+import webbrowser.model.ButtonTabComponent;
+import webbrowser.model.tab.*;
 import webbrowser.model.Historico;
 import webbrowser.model.HistoricoTableModel;
 
@@ -109,9 +115,16 @@ public class plataforma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddTabActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TabHistorico th = new TabHistorico();
-        createTabPanelHistorico(th, visibleTabPanels.size());
-        jTabbedPane1.setSelectedIndex(visibleTabPanels.size() - 1);
+
+        try {
+            TabHistorico th;
+            th = new TabHistorico();
+            createTabPanelHistorico(th, visibleTabPanels.size());
+            jTabbedPane1.setSelectedIndex(visibleTabPanels.size() - 1);
+
+        } catch (Exception e) {
+            //Logger.getLogger(plataforma.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -155,7 +168,7 @@ public class plataforma extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void createTabPanel(JPanel _newPanel, int _i) {
         visibleTabPanels.add(_newPanel);
 
@@ -164,11 +177,13 @@ public class plataforma extends javax.swing.JFrame {
     }
 
     public void createTabPanelHistorico(JPanel _newPanel, int _i) {
+
+        
         visibleTabPanels.add(_newPanel);
 
         jTabbedPane1.addTab("Historico", _newPanel);
-        createCloseButton(_newPanel, _i);
-        
+       // createCloseButton(_newPanel, _i);
+
     }
 
     public void createCloseButton(final JPanel _c, Integer _pos) {
@@ -189,9 +204,16 @@ public class plataforma extends javax.swing.JFrame {
         // pnlTab.addListener(listener);
     }
 
+    public void RemoveSelectedTab() {
+        System.out.println(jTabbedPane1.getSelectedIndex());
+        jTabbedPane1.removeTabAt(jTabbedPane1.getSelectedIndex());
+        //  visibleTabPanels.remove(1);
+    }
+
     public void setFocusOnTab(int _i) {
         jTabbedPane1.setSelectedIndex(_i);
     }
+    
     public List<JPanel> visibleTabPanels = new ArrayList<JPanel>();
     public List<JPanel> hiddenTabPanels = new ArrayList<JPanel>();
 

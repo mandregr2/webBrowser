@@ -5,7 +5,7 @@
  */
 package webbrowser;
 
-import webbrowser.database.FazConsulta;
+import webbrowser.ConectDatabase.FazConsulta;
 
 /**
  *

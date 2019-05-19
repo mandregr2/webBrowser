@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package webbrowser.gui;
+package webbrowser.model;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
+import webbrowser.ConectDatabase.ClsSQLHistorico;
+import webbrowser.model.Historico;
 
 /**
  *
@@ -24,6 +28,10 @@ public class tab extends javax.swing.JPanel {
     public tab() {
         initComponents();
     }
+    boolean privado = false;
+    Historico his = new Historico();
+    Date agora = new Date();
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +50,7 @@ public class tab extends javax.swing.JPanel {
         jButtonRefresh = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButtonPrivado = new javax.swing.JToggleButton();
 
         jButtonBack.setText("<");
 
@@ -98,7 +106,12 @@ public class tab extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jToggleButton1.setText("Privado");
+        jToggleButtonPrivado.setText("Privado");
+        jToggleButtonPrivado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonPrivadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,7 +132,7 @@ public class tab extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton1))
+                        .addComponent(jToggleButtonPrivado))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -135,7 +148,7 @@ public class tab extends javax.swing.JPanel {
                     .addComponent(jTextFieldUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jButtonRefresh)
-                    .addComponent(jToggleButton1))
+                    .addComponent(jToggleButtonPrivado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -157,6 +170,11 @@ public class tab extends javax.swing.JPanel {
         jep.setEditable(false);
         try {
             jep.setPage(UrlDigitada);
+            //if(privado){
+                
+            //}else{
+                his.salvaNoHistorico(df.format(agora).toString(), UrlDigitada.toString());
+            //}
         } catch (IOException e) {
             jep.setContentType("text/html");
             jep.setText("<html>Could not load " + jTextFieldUrl.getText() + "  </html>");
@@ -171,6 +189,16 @@ public class tab extends javax.swing.JPanel {
         jPanel2.show();
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jToggleButtonPrivadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonPrivadoActionPerformed
+        if (jToggleButtonPrivado.getAction().isEnabled()){
+            privado = true;
+        }
+        else{
+            privado = false;
+        }         
+
+    }//GEN-LAST:event_jToggleButtonPrivadoActionPerformed
     public final void setModel(JComboBox _comboBox, List<String> _browser) {
         _comboBox.setModel(
                 new javax.swing.DefaultComboBoxModel(
@@ -186,6 +214,6 @@ public class tab extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldUrl;
-    private javax.swing.JToggleButton jToggleButton1;
+    public javax.swing.JToggleButton jToggleButtonPrivado;
     // End of variables declaration//GEN-END:variables
 }

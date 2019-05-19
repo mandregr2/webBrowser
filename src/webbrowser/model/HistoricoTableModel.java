@@ -47,30 +47,37 @@ public class HistoricoTableModel extends AbstractTableModel {
                 return DadosHistorico.get(linha).getUrlConsultada();
             case 1:
                 return DadosHistorico.get(linha).getDataConsulta();
-            }
+        }
 
         return null;
     }
-    public Historico getColunaSelecionada(int linha){
+
+    public Historico getColunaSelecionada(int linha) {
         Historico h = new Historico();
         h = DadosHistorico.get(linha);
         return h;
     }
-public void DeleteRowInTable(Historico h) {
+
+    public void DeleteRowInTable(Historico h) {
         this.DadosHistorico.remove(h);
         this.fireTableDataChanged();
     }
+    
+    public void DeleteAllRowsInTable(){
+        this.DadosHistorico.clear();
+         this.fireTableDataChanged();
+    }
+
     public void addRowInTable(Historico h) {
         this.DadosHistorico.add(h);
         //DadosPagar.sort(e.compareTo(e));
         this.fireTableDataChanged();
-        
-        
+
     }
 
     private void tamanho_colunas() {
         //centraliza
-        
+
         DefaultTableCellRenderer rendererCentro = new DefaultTableCellRenderer();
         rendererCentro.setHorizontalAlignment(SwingConstants.CENTER);
         //alinha a direita
@@ -83,7 +90,6 @@ public void DeleteRowInTable(Historico h) {
         //JTableHeader header = tb_local.getTableHeader();
         //header.setPreferredSize(new Dimension(0, 20));   // define a largura do cabeçalho
         //TableColumnModel modeloDaColuna = tb_local.getColumnModel();
-
         //modeloDaColuna.getColumn(0).setCellRenderer(rendererEsquerda);
         //modeloDaColuna.getColumn(1).setCellRenderer(rendererDireita);
         //modeloDaColuna.getColumn(2).setCellRenderer(rendererDireita);
@@ -92,7 +98,6 @@ public void DeleteRowInTable(Historico h) {
         //modeloDaColuna.getColumn(5).setCellRenderer(rendererDireita);
         //modeloDaColuna.getColumn(6).setCellRenderer(rendererDireita);
         //modeloDaColuna.getColumn(7).setCellRenderer(rendererDireita);
-
         //modeloDaColuna.getColumn(0).setMinWidth(10);
         //modeloDaColuna.getColumn(1).setMinWidth(10);
         //modeloDaColuna.getColumn(2).setMinWidth(10);
